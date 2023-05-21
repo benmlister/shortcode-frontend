@@ -5,5 +5,27 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+ </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Authentication\" />
+    <None Remove="Views\App\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\ShortUrl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Authentication\" />
+    <Folder Include="Views\App\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\ShortUrl\" />
+  </ItemGroup>
 </Project>

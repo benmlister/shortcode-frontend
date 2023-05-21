@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Url>
+@using System.Net.Http;
+@{
+    string baseUrl = ViewBag.BaseUrl;
+}
+<div class="toast-container"></div>
+<p class="h4 text-body-secondary">Previous ShortCodes</p>
+@foreach (var item in Model)
+{
+    <div class="card mt-4">
+        <div class="card-header">
+            @item.url
+        </div>
+        <div class="card-body">
+            <p><a target="_blank" asp-action="RedirectToURL" asp-controller="Home" asp-route-shortcode="@item.shortcode">@baseUrl@item.shortcode</a></p>
+            <div class="row row-cols-auto">
+                <form class="qrcode-generate col" id="caption-@item.shortcode">
+                    <input type="hidden" name="shortcode" value="@item.shortcode" />
+                    <button class="btn btn-primary">Generate QR Code</button>
+                </form>
+                <form class="ai-generate col" id="qrcode-@item.shortcode">
+                    <input type="hidden" name="url" value="@item.url" />
+                    <button class="btn btn-primary">Create Caption</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="card-footer text-body-secondary">
+            <div class="row">
+                <div class="col-auto">
+                    <p>Created</p>
+                    <p>@item.createdon.Value.Date</p>
+                </div>
+                <div class="col-auto">
+                    <p><i class="fa-solid fa-chart-simple"></i> @item.views</p>
+                </div>
+            </div>
+            
+            
+        </div>
+
+
+
+    </div>
+}
+<script>// Handle form submission using AJAX
+
+
+    $('.ai-generate').submit(function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the form data
+        var formData = $(this).serialize();
+
+        // Get the form's unique identifier
+        var formId = $(this).attr('id');
+
+        // Send an AJAX request to the server
+        $.ajax({
+            url: '/app/generate', // Replace with the appropriate URL for your server-side endpoint
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Create a new HTML element
+                var newElement = $('<div>')
+                    .text(response);
+
+                // Append the new element to a fixed location on the screen
+                $('#' + formId).parent().append(newElement);
+
+
+
+            },
+            error: function (xhr, status, error) {
+                // Handle the error case
+                console.log('Error:', error);
+            }
+        });
+    });
+
+    $('.qrcode-generate').submit(function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the form data
+        var formData = $(this).serialize();
+
+
+        // Get the form's unique identifier
+        var formId = $(this).attr('id');
+
+        // Send an AJAX request to the server
+        $.ajax({
+            url: '/app/qrcode', // Replace with the appropriate URL for your server-side endpoint
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Create a new QR code image element
+                var qrCodeImage = $('<img>')
+                    .attr('src', response)
+                    .addClass('qrcode-image');
+
+                // Append the QR code image to the form's parent div
+                $('#' + formId).parent().append(qrCodeImage);
+
+                // Hide the form after displaying the QR code
+                $('#' + formId).hide();
+            },
+            error: function (xhr, status, error) {
+                // Handle the error case
+                console.log('Error:', error);
+            }
+        });
+    });</script>

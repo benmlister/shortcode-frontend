@@ -1,9 +1,81 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="bg-gradient bg-primary">
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-6">
+                <h1 class="display-2 text-light">Shortcode</h1>
+                <p class="lead text-light">Say goodbye to clunky URLs and hello to an enhanced online experience with our URL shortening service.</p>
+                <div class="row row-cols-auto align-items-center">
+                    <div class="col">
+                        <a class="btn btn-light btn-md" asp-action="Register" asp-controller="Authentication">Get started</a>
+                    </div>
+                    <div class="col">
+                        <a class="text-light" asp-action="Login" asp-controller="Authentication">Already have an account?</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="container">
+<div class="row mt-5">
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">
+                Free
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Free forever</h4>
+                <p>Features:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">QR Code Generation</li>
+                    <li class="list-group-item">AI Caption generation</li>
+                    <li class="list-group-item">100 requests/month</li>
+                    <li class="list-group-item">Urls are fixed</li>
+                </ul>
+                <a class="btn btn-primary" asp-action="Register" asp-controller="Authentication">Get started</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">
+                Small Business
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">$24/month</h4>
+                <p>Features:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">QR Code Generation</li>
+                    <li class="list-group-item">AI Caption generation</li>
+                    <li class="list-group-item">500 requests/month</li>
+                    <li class="list-group-item">Urls are fixed</li>
+                </ul>
+                <a href="#" class="btn btn-primary disabled">Coming soon</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">
+                Enterprise
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Contact us</h4>
+                <p>Features:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">QR Code Generation</li>
+                    <li class="list-group-item">AI Caption generation</li>
+                    <li class="list-group-item">Unlimited requests/month</li>
+                    <li class="list-group-item">Modify existing urls</li>
+                </ul>
+                <a href="#" class="btn btn-primary disabled">Coming soon</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

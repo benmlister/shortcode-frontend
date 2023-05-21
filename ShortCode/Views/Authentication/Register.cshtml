@@ -1,0 +1,41 @@
+﻿@model Newtonsoft.Json.Linq.JValue
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="bg-primary bg-gradient">
+    <div class="container">
+        <div class="row pb-5">
+            <div class="col">
+                <h1 class="p-5 text-light">@ViewData["Title"]</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model != null)
+{
+    <p>@Model.ToString()</p>
+}
+<div class="bg-light pt-4 pb-5">
+    <div class="container">
+        <div class="row mt-n5 mb-4">
+            <div class="card bg-white py-3">
+                <div class="card-body">
+                    <p class="h5">Create a new account</p>
+
+                    <form method="post" asp-action="Register" class="row g-3 align-items-center">
+                        <label class="form-label">Username</label>
+                        <input class="form-control" type="text" name="username" required />
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="email" name="email" required />
+                        <label class="form-label">Password</label>
+                        <input class="form-control" type="password" name="password" required />
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
